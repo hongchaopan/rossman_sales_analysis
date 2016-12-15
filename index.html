@@ -251,6 +251,18 @@
 <p>To select the optimal hyperparameters, 5-fold cross validation is used. The best 5-fold rmspe of lasso is 49.16% with a standard deviation 0.0790, which is quite poor, whereas the best 5-fold rmspe of xgboost is 16.20% with a standard deviation of 0.0976. Below shows that for xgboost, we should probably increase the max_depth to increase the performance.</p>
 
 <p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/xgboost.png" alt="xgboost rmspe with varying hyperparameters"></p>
+
+<h3>
+<a id="future-works" class="anchor" href="#future-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Future Works</strong>
+</h3>
+
+<p>Future work on this dataset can be divided into three directions - </p>
+
+<p><strong>Autoregression</strong>: One of the best predictor of future sales are past sales (time dimension is determinant). Very good method for exploring seasonality and autocorrelation is Autoregression (AR).</p>
+
+<p><strong>Feature engineering</strong>: There must be a reason for Customers feature staying in the training set. There are clear patterns influenced by different holidays that we can use to estimate the mean number of Customers that we can use later on.</p>
+
+<p><strong>Boosting (xgBoost)</strong>: After feature engineering, we could try with Decision Trees again. The best shown method according to our experience as well as the papers we all read from is Decision Tree with Boosting. Especially with using the xgBoost library. It is supervised learning, ensemble of classification and regression trees.</p>
       </section>
     </div>
 
