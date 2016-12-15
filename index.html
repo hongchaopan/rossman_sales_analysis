@@ -239,6 +239,22 @@
 <h3>
 <a id="baseline-models" class="anchor" href="#baseline-models" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Baseline Models</strong>
 </h3>
+
+<p>We used the lasso regression (available in sklearn) and xgboost’s implementation of the gradient boosting machine (gbm). For feature engineering, we one-hot-encoded all the categorical variables and filled in the missing values in 5 of the variables with -1. It should be noted that xgboost has built-in mechanisms to deal with missing values and all one must do is to indicate to the algorithm how missing values are represented in the data.</p>
+
+<h5>
+<a id="optimization" class="anchor" href="#optimization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Optimization</strong>
+</h5>
+
+<p>A large part of this milestone is focused on finding the optimal hyperparameters of the algorithms. For lasso, it will be the alpha (the larger the alpha, the greater the amount of regularization and the lower the model complexity). For xgboost, there are many hyperparameters and the important ones are max_depth (maximum depth of each), eta (the learning rate). Because there are a large of hyperparameters to tune, we used the optimization package, hyperopt.</p>
+
+<h5>
+<a id="results" class="anchor" href="#results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Results</strong>
+</h5>
+
+<p>To select the optimal hyperparameters, 5-fold cross validation is used. The best 5-fold rmspe of lasso is 49.16% with a standard deviation 0.0790, which is quite poor, whereas the best 5-fold rmspe of xgboost is 16.20% with a standard deviation of 0.0976.</p>
+
+<p>Figure 1 and Figure 2 show that for xgboost, we should probably increase the max_depth to increase the performance. Figure 3 and Figure 4 show that for lasso regression, smaller values of alpha give superior performance.</p>
       </section>
     </div>
 
