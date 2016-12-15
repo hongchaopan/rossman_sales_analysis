@@ -19,7 +19,18 @@ We use a number of different libraries besides the typical ones from class (pand
 
 Xgboost was used for main models/experiments with parallel programming.
 
-## ***git Notes***
+## ***File Organizations***
+
+- /data/: used to contain Kaggle raw data, removed due to memory usage
+- /docs/: website contents
+- /images/: images generated from IPython Notebook and used in website
+- /kaggle_submission/: predictions of Kaggle test data
+- /scripts/: utility functions
+- /styles/: website style
+- EDA.ipynb and EDA_summary.doc: Milestone 3, exporatory data analysis
+- Model_summary.doc and model.ipynb: Milestone 4 and 5, baseline models and future works
+
+## ***Git Notes***
 
 In the CS109, we have using `git` in a non-traditional role. 
 Usually branches live only to deliver some well defined piece of
