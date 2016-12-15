@@ -19,7 +19,7 @@ We use a number of different libraries besides the typical ones from class (pand
 
 Xgboost was used for main models/experiments with parallel programming.
 
-# git Notes
+## ***git Notes***
 
 In the CS109, we have using `git` in a non-traditional role. 
 Usually branches live only to deliver some well defined piece of
