@@ -1,4 +1,4 @@
-# CS109A Sample Web site
+# CS109A Website
 
 
 ## Setup
