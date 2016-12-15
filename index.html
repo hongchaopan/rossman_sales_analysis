@@ -188,7 +188,40 @@
 
 <p>The boxplot of holiday versus sales shows that there is an increase in sales during state holidays, while the sales amount remain roughly the same whether it’s school holiday or not. It’s reasonable since most customers are adults and they don’t have time to go shopping during school holidays.</p>
 
-<p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/holiday.png" alt="image"></p>
+<p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/holiday.png" alt=""></p>
+
+<h5>
+<a id="power-of-sundays" class="anchor" href="#power-of-sundays" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Power of Sundays</strong>
+</h5>
+
+<p>The analysis on weekdays versus sales shows that people tends to do shopping on Sundays, followed by Monday and Friday. It’s interesting to see that people do less shopping on Saturday, although they don’t need to work on Saturday.</p>
+
+<p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/sundays.png" alt=""></p>
+
+<h5>
+<a id="seasonal-impacts" class="anchor" href="#seasonal-impacts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Seasonal Impacts</strong>
+</h5>
+
+<p>We checked whether there are seasonal effects on the sales. The time series plot over year shows that people tends to buy more stuff during the holiday seasons (November and December), which agrees with our common belief.</p>
+
+<h5>
+<a id="store-types-research" class="anchor" href="#store-types-research" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Store Types Research</strong>
+</h5>
+
+<p>We checked the impact of different store types on sales. The time series plot shows that store type B will have huge impact on sales, while the seasonal effect on different store types are roughly the same. </p>
+
+<p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/storeType.png" alt=""></p>
+
+<h5>
+<a id="-dealing-with-missing-data-and-filling-data-gaps-" class="anchor" href="#-dealing-with-missing-data-and-filling-data-gaps-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>** Dealing with Missing Data and Filling Data Gaps **</h5>
+
+<p>In training dataset, we see the number of stores reported every day is not exactly the same (see Figure 15). There are 180 stores with missing values from 7/31 2014 to 12/31 2014. </p>
+
+<p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/missingData1.png" alt=""></p>
+
+<p>To fill the gap of these 180 stores, we took either majority or mean rules to do data cleaning and wrangling.</p>
+
+<p><img src="https://github.com/weiyialanchen/rossman_sales_analysis/raw/master/images/missingData2.png" alt=""></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/weiyialanchen/rossman_sales_analysis">Rossmann Store Sales Prediction </a> is maintained by <a href="https://github.com/weiyialanchen">weiyialanchen</a>.</span>
