@@ -1,238 +1,161 @@
-# CS109A Website
+# CS109 Group Project Fall 2016 
 
+## ***Predicting Rossmann Sales***
 
-## Setup
+#### Where to find things:
 
-1.   Get a copy of this repository in your local GitHub account. This is called _forking_.
+If you are a student and want to see our project summary visit [Predict Rossmann Sales](https://weiyialanchen.github.io/rossman_sales_analysis/)
 
-    Follow the instructions at [GitHub help for forking](https://help.github.com/articles/fork-a-repo/). Instead of
-    `octocat/Spoon-Knife`, use `https://github.com/cs109Alabs/project_resources`
+If you want to learn how the site was built, visit [GitHub using gh-pages](https://pages.github.com/), we use automate page generator to create a static page.
 
-    **Important**: follow only the steps to *Fork a Sample Repository* and
-     *Keep your fork synced, Steps 1 and 2*. **Do not do Step 3: Configure Git to sync your fork with the original Spoon-Knife repository**
+#### Project Dependencies and non-standard libraries
 
-    We want you to use this repository as a starter template and not sync back
-    to it as you make your changes.
+##### Visualization
 
-2. Publish your copy of the site as a public GitHub page
+Tableau/Matplotlib was used to prepare some of the visualizations. The results were then imported into iPython via embedding into `%%html` cells.
 
-    * From your copy of the project (`https://github.com/<myuser>/project_resources`),
-    click on  `Settings`
-    * Change the Project Name to something more friendly like `superawesome`. No spaces
-    are allowed. Click on `Rename`.
-    * Go back to the Settings page, scroll down to GitHub pages. Set the source to
-    `master branch /docs folder` and click on `Save`.
-    * Try it! In your browser, go to `https://<myuser>.github.io/superawesome`
+##### Libraries Used
+We use a number of different libraries besides the typical ones from class (pandas, numpy, sklearn, statsmodels)
 
-    Congratulations! You have published your first web site.
+Xgboost was used for main models/experiments with parallel programming.
 
+# git Notes
 
-### Exercise 1 - Export an iPython Notebook to HTML and publish it on the web
+In the CS109, we have using `git` in a non-traditional role. 
+Usually branches live only to deliver some well defined piece of
+functionality and then are merged back into the master branch.
 
-A copy of a full featured Jupyter notebook was obtained from  [https://github.com/fonnesbeck/multilevel_modeling](https://github.com/fonnesbeck/multilevel_modeling)
+Since we will be working concurrently on multiple parts of this 
+project, `git` will be very useful tool to ensure that we can 
+work in parallel, even on the same code, without interference.
 
-A copy of this notebook and related data is in your local copy of the repository.
-We are now going to publish it to the web.
+Here are some notes to get you started. 
 
-If you'd like to examine it before publishing open `multilevel_modeling.ipynb` locally.
+#### Copy this repository to your machine
 
-1.   Convert the notebook to static HTML. Assuming the setup is complete, there
-is a local directory that corresponds to the project on GitHub
+`git clone git@github.com:weiyialanchen/rossmann_sales_analysis.git`
 
-    In the terminal window, enter:
+### Creating a branch 
 
-    ```
-    cd project_resources
-    jupyter nbconvert --to html --template full --output docs/page1.html multilevel_modeling.ipynb
-    ```
-
-2.   Push the changes to GitHub
-
-  ```
-  git add .
-  git commit -m "notebook converted"
-  git push
-  ```
-
-Once that is complete, navigate to `https://<myuser>.github.io/superawesome/page1.html`
-
-You have now converted a Jupyter notebook to a static HTML page.
-
-At this point, there is a choice to make:
-
-* Put your publishable content in the docs subdirectory of this project
-* Create a /docs directory of your current git project repository and change the
-project settings to publish it.
-
-### Exercise 2 - Link Pages
-
-In this exercise, a second notebook will be linked to the first notebook.
-
-Back in your `project_resources` directory, open `Chapter8.ipynb`. (This
-  file is modified from https://github.com/JWarmenhoven/ISLR-python/blob/master/Notebooks/Chapter%208.ipynb)
-
-First at the top, you'll notice that it is easy to embed links to sections
-within the same page. This table of contents helps your readers navigate
-the content. Examine the third cell:
+This will create a new branch in the code. You can do anything you
+want in this branch and it will not affect anything in master, 
+until a merge is done (see below).
 
 ```
-- [8.1.1 Regression Trees](#8.1.1-Regression-Trees)
+cd rossmann_sales_analysis
+git checkout -b newbranch
+git push origin newbranch
+git push --set-upstream origin newbranch
 ```
+The `push origin` is needed to send the branch to github, which you
+will need to do before pushing the branch so everyone else can see
+it.
 
-The text inside the `[]` is how the link is displayed. The text
-text inside the `()` is the destination of the link.
-([More info about links inside pages](http://sebastianraschka.com/Articles/2014_ipython_internal_links.html))
+From this point do whatever edits you want. Create a subdirectory,
+add files, make changes.
 
-Add a new line to end of this cell:
-```
-- [Harvard Home Page](http://www.harvard.edu)
-```
+### Commit early and regularly
 
-When you execute this cell and click on the new link, a new window will
-open with Harvard's home page.
+Do not leave your code unbackedup on your machine. I commit every
+time I add something new and useful that works. It could be as little
+as 2-3 lines of code. 
 
-To avoid opening a new page, explicit HTML has to be used. Create a new cell
-and enter:
+This is the same as in class, although now you will be committing just
+to your branch.
 
-```
-%%html
-
-<a href="http://www.harvard.edu" target="_self">Harvard Home Page</a>
-```
-
-Rather than an interpreted Markdown cell, this new cell contains just
-HTML. When running it locally, Jupyter will ask if you want to leave
-the page. Since we will export this page to static HTML, it will
-not be an issue for readers.
-
-Let's change this to a link to the first page:
+Assuming you are in the cs109-groupproj-college directory
 
 ```
-%%html
-
-<a href="page1.html" target="_self">First Project Page</a>
-```
-
-This is a *relative* link (no leading `http://`). By default, the browser will
-find the page in the same directory. Let's publish this page and test it.
-
-Go back to terminal, create the HTML and push to GitHub:
-```
-jupyter nbconvert --to html --template full --output docs/page2.html Chapter8.ipynb
 git add .
-git commit -m "added links between pages"
+git commit -m "<one line summary of what changed>"
 git push
 ```
 
-From your browser, navigate to `https://<myuser>.github.io/superawesome/page2.html`
-and test the link to page 1.
+### See what others have done
 
-### Exercise 3 - Customize Notebook
+To grab a fresh local copy of everything in the github repository, use
+`git fetch`. Any new branches anyone else has created will be moved
+down.
 
-Let's say you don't want your code messing up your nice web page.
+To switch to their branch, while leaving yours untouched use 
+`git checkout otherbranch`. To get back to your branch `git checkout mybranch`.
 
-Open up the `Chapter8.ipynb` file again.
+### Merging - Step 1
 
-Add a cell at the top with the following contents:
+The first step in merging is to merge the latest master branch into
+your branch
+
 ```
-from IPython.display import HTML
-
-HTML('''<script>
-code_show=true;
-function code_toggle() {
- if (code_show){
- $('div.input').hide();
- } else {
- $('div.input').show();
- }
- code_show = !code_show
-}
-$( document ).ready(code_toggle);
-</script>
-<form action="javascript:code_toggle()"><input type="submit" value="Click here to toggle on/off the raw code."></form>''')
+git fetch
+git merge origin/master
 ```
+If there are any conflicts, like two people having written to the same
+file in the same place, it will let you know. It is pretty smart
+about merging different pieces of code or file that do not impact each
+other. This is one of git's most amazing features.
 
-This will add a button on the top of the page that allows readers to toggle
-the code on or off. It is off by default.
+After you have reconciled any merge conflicts, you can commit
+the merged master into your branch, which are the same commands as 
+before
 
-(Courtesy of [StackOverflow](http://stackoverflow.com/questions/27934885/how-to-hide-code-from-cells-in-ipython-notebook-visualized-with-nbviewer))
-
-Go back to terminal, create the HTML and push to GitHub:
 ```
-jupyter nbconvert --to html --template full --output docs/page2.html Chapter8.ipynb
+git add .  
+git commit -m "I merged in master"  
+git push  
+```
+Now your branch has all of master and all of your new stuff
+
+### Merging - Step 2
+
+Now that you are fully up to date in your branch, you can update master:
+
+```
+git checkout master  
+git merge newbranch    
+git status    
+git push  
+```
+Now your code has been integrated into master. Your work is done.
+
+Create a new branch to start on another unit of work (or keep 
+working on the same branch if it isn't done yet).
+
+It is a good idea to not wait too long to merge into master. Once it is
+in a stable state, ready to use by others if not feature complete, do
+the merge into master.
+
+### When Two People Work on the Same Branch
+
+If two of you are working on the same branch (which I don't 
+particularly advise), you have to do a few extra steps to
+keep each other in sync. Otherwise one of you will make a 
+change, push the change, while another person makes a change.
+Then git complains about not being able to reconcile the two
+changes and the commits are out of sync.
+
+So before pushing your code, merge in the latest copy of the
+origin branch from github:
+
+```
+git fetch
+git merge origin/mybranch
+```
+If there are no conflicts, you can proceed. Otherwise, you have
+to manually fix the conflicts first.
+
+Then, as before:
+
+```
 git add .
-git commit -m "add toggle button for code"
+git commit -m "added cool gizmo 45"
 git push
 ```
 
-Now by default your HTML page will be clean, but still allow drill down into the code.
+Bottom line: fetch and merge from the origin branch before making
+your commits and pushes.
 
+### That's It
 
-### Exercise 4 - Change the Styling
+`git` has many powerful features like pull requests and code reviews,
+but I don't think we need them for this project.
 
-We are now going to apply styling to fonts using CSS.
-
-In your favorite text editor, open `docs/custom.css`
-
-Look for the lines:
-```
- h1 {
-        font-family: Helvetica, serif;
-    }
- h4{
-```
-
-Insert the following three lines so the file looks like this:
-
-```
- h1 {
-        font-family: Helvetica, serif;
-    }
-h3 {
-    font-family: "Raleway", Times, serif;
-}
-h4{
-```
-
-This changes the font of `h3` tags to be using the Raleway font.
-
-As before, regenerate the HTML and publish it:
-
-```
-jupyter nbconvert --to html --template full --output docs/page2.html Chapter8.ipynb
-git add .
-git commit -m "changed font for h3 tags"
-git push
-```
-
-*Learn more:*
-* [CSS](http://www.w3schools.com/css/default.asp)
-* Huge Choice of free fonts at [Google Fonts](https://fonts.google.com/)
-* Some books on font choices:
-   * _The Non-designer Design Book_ by Robin Williams. See Chapter 10 for Concord, Conflict and Contrast type of fonts. See also major categories of font like Old Style, Modern, Sans Serif, etc. There are six major categories.
-   * _Responsive Typography_ by Jason Pamental.
-
-
-### Exercise 5 - Embedding PDF
-
-Grab a copy a PDF to embed in your notebook, such as
-[this one](http://www.texample.net/media/tikz/examples/PDF/plane-partition.pdf)
-
-Save it into the local directory.
-
-Create a new cell in `Chapter8.ipynb` and embed the PDF in it:
-
-```
-from IPython.display import IFrame
-IFrame("./plane-partition.pdf", width=600, height=300)
-```
-
-The PDF will now render inside the notebook. However, when you
-publish it, the link will be broken because the ipynb file and
-the HTML file are in different directories. For simplicity,
-make a second copy of the PDF file in the `docs` subdirectory.
-
-Now when it is published, the PDF will appear correctly.
-
-
-Questions? Comments? Ask on Piazza.
